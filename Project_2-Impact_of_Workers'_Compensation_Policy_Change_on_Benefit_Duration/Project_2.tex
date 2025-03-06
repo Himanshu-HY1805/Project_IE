@@ -1,0 +1,939 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{float}
+\usepackage{tabularray}
+\usepackage[normalem]{ulem}
+\usepackage{graphicx}
+\UseTblrLibrary{booktabs}
+\UseTblrLibrary{siunitx}
+\NewTableCommand{\tinytableDefineColor}[3]{\definecolor{#1}{#2}{#3}}
+\newcommand{\tinytableTabularrayUnderline}[1]{\underline{#1}}
+\newcommand{\tinytableTabularrayStrikeout}[1]{\sout{#1}}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Project2},
+  pdfauthor={himanshu yadav},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Project2}
+\author{himanshu yadav}
+\date{2024-05-13}
+
+\begin{document}
+\maketitle
+
+\section{Importing required
+libraries}\label{importing-required-libraries}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)    }\CommentTok{\# ggplot(), \%\textgreater{}\%, mutate(), and friends}
+\FunctionTok{library}\NormalTok{(scales)       }\CommentTok{\# Format numbers with functions like comma(), percent(), and dollar()}
+\FunctionTok{library}\NormalTok{(broom)        }\CommentTok{\# Convert models to data frames}
+\FunctionTok{library}\NormalTok{(modelsummary) }\CommentTok{\# Side{-}by{-}side regression tables}
+\FunctionTok{library}\NormalTok{(foreign)   }\CommentTok{\# for importing stata data}
+\FunctionTok{library}\NormalTok{(readr)}
+\FunctionTok{library}\NormalTok{(haven)}
+\FunctionTok{library}\NormalTok{(modelsummary)}
+\FunctionTok{library}\NormalTok{(stargazer)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Importing dataset ``INJURY''}\label{importing-dataset-injury}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dataset }\OtherTok{\textless{}{-}} \FunctionTok{read\_dta}\NormalTok{(}\StringTok{"C:/Github rep/Impact\_Assesment{-}Project/Project\_2{-}Impact\_of\_Workers\textquotesingle{}\_Compensation\_Policy\_Change\_on\_Benefit\_Duration/INJURY.DTA"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Cleaning the data so that it only includes rows from (ky ==
+1)}\label{cleaning-the-data-so-that-it-only-includes-rows-from-ky-1}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{injury }\OtherTok{\textless{}{-}}\NormalTok{ dataset }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(ky}\SpecialCharTok{==}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Renaming the columns}\label{renaming-the-columns}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{injury }\OtherTok{\textless{}{-}}\NormalTok{ injury }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{rename}\NormalTok{(}\AttributeTok{duration =}\NormalTok{ durat, }\AttributeTok{log\_duration =}\NormalTok{ ldurat,}\AttributeTok{after\_1980 =}\NormalTok{ afchnge)}
+\end{Highlighting}
+\end{Shaded}
+
+Viewing the dataset
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{injury}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5,626 x 30
+##    duration after_1980 highearn  male married  hosp indust injtype   age prewage
+##       <dbl>      <dbl>    <dbl> <dbl>   <dbl> <dbl>  <dbl>   <dbl> <dbl>   <dbl>
+##  1        1          1        1     1       0     1      3       1    26    405.
+##  2        1          1        1     1       1     0      3       1    31    644.
+##  3       84          1        1     1       1     1      3       1    37    398.
+##  4        4          1        1     1       1     1      3       1    31    528.
+##  5        1          1        1     1       1     0      3       1    23    529.
+##  6        1          1        1     1       1     0      3       1    34    614.
+##  7        7          1        1     1       1     0      3       1    35    546 
+##  8        2          1        1     1       1     1      3       1    45    660.
+##  9      175          1        1     1       1     1      3       1    41    479.
+## 10       60          1        1     1       1     1      3       1    33    481.
+## # i 5,616 more rows
+## # i 20 more variables: totmed <dbl>, injdes <dbl>, benefit <dbl>, ky <dbl>,
+## #   mi <dbl>, log_duration <dbl>, afhigh <dbl>, lprewage <dbl>, lage <dbl>,
+## #   ltotmed <dbl>, head <dbl>, neck <dbl>, upextr <dbl>, trunk <dbl>,
+## #   lowback <dbl>, lowextr <dbl>, occdis <dbl>, manuf <dbl>, construc <dbl>,
+## #   highlpre <dbl>
+\end{verbatim}
+
+\section{Converting ``industry'' and ``injury type'' to
+categories/factors}\label{converting-industry-and-injury-type-to-categoriesfactors}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OtherTok{\textless{}{-}}\NormalTok{ injury }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{indust =} \FunctionTok{as.factor}\NormalTok{(indust),}\AttributeTok{injtype =} \FunctionTok{as.factor}\NormalTok{(injtype))}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{1. Calculating the policy effect on duration, without
+running any regression, here we see the mean duration of the weeks for
+both treated and control group before and after 1980
+(treatement)}\label{calculating-the-policy-effect-on-duration-without-running-any-regression-here-we-see-the-mean-duration-of-the-weeks-for-both-treated-and-control-group-before-and-after-1980-treatement}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{difr }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{group\_by}\NormalTok{(after\_1980,highearn) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summarize}\NormalTok{(}\AttributeTok{mean.duration =} \FunctionTok{mean}\NormalTok{(duration))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` has grouped output by 'after_1980'. You can override using the
+## `.groups` argument.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(difr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 4 x 3
+## # Groups:   after_1980 [2]
+##   after_1980 highearn mean.duration
+##        <dbl>    <dbl>         <dbl>
+## 1          0        0          6.27
+## 2          0        1         11.2 
+## 3          1        0          7.04
+## 4          1        1         12.9
+\end{verbatim}
+
+\subsubsection{{[}after\_1980(0);highearn(0){]}: pre-treatement control
+group mean\_duration : 6.47
+weeks}\label{after_19800highearn0-pre-treatement-control-group-mean_duration-6.47-weeks}
+
+\subsubsection{{[}after\_1980(0);highearn(1){]}: pre-treatement
+treatement group mean\_duration : 11.76
+weeks}\label{after_19800highearn1-pre-treatement-treatement-group-mean_duration-11.76-weeks}
+
+\subsubsection{{[}after\_1980(1);highearn(0){]}: post-treatement control
+group mean\_duration : 7.03
+weeks}\label{after_19801highearn0-post-treatement-control-group-mean_duration-7.03-weeks}
+
+\subsubsection{{[}after\_1980(1);highearn(1){]}: post-treatement
+treatement group mean\_duration : 12.89
+weeks}\label{after_19801highearn1-post-treatement-treatement-group-mean_duration-12.89-weeks}
+
+\subsubsection{policy\_effect ={[}(avg\_duration(post-treatement treated
+group)-avg\_duration(pre-treatement treated
+group){]}-{[}avg\_duration(post-treatement control
+group)-avg\_duration(pre-treatement control
+group){]}}\label{policy_effect-avg_durationpost-treatement-treated-group-avg_durationpre-treatement-treated-group-avg_durationpost-treatement-control-group-avg_durationpre-treatement-control-group}
+
+\subsubsection{policy\_effect = {[}avg\_duration of treated group
+(POST-PRE){]}-{[}avg\_duration of control
+group(POST-PRE){]}}\label{policy_effect-avg_duration-of-treated-group-post-pre-avg_duration-of-control-grouppost-pre}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pre\_treatement\_treated\_group }\OtherTok{\textless{}{-}}\NormalTok{ difr }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(after\_1980 }\SpecialCharTok{==} \DecValTok{0}\NormalTok{, highearn }\SpecialCharTok{==} \DecValTok{1}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{pull}\NormalTok{(mean.duration)}
+
+\NormalTok{pre\_treatement\_control\_group}\OtherTok{\textless{}{-}}\NormalTok{ difr }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(after\_1980 }\SpecialCharTok{==} \DecValTok{0}\NormalTok{, highearn }\SpecialCharTok{==} \DecValTok{0}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{pull}\NormalTok{(mean.duration)}
+
+\NormalTok{post\_treatement\_treated\_group }\OtherTok{\textless{}{-}}\NormalTok{ difr }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(after\_1980 }\SpecialCharTok{==} \DecValTok{1}\NormalTok{, highearn }\SpecialCharTok{==} \DecValTok{1}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{pull}\NormalTok{(mean.duration)}
+
+\NormalTok{post\_treatement\_control\_group }\OtherTok{\textless{}{-}}\NormalTok{ difr }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(after\_1980 }\SpecialCharTok{==} \DecValTok{1}\NormalTok{, highearn }\SpecialCharTok{==} \DecValTok{0}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{pull}\NormalTok{(mean.duration)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{treatement\_group\_before\_after }\OtherTok{\textless{}{-}}\NormalTok{ post\_treatement\_treated\_group }\SpecialCharTok{{-}}\NormalTok{ pre\_treatement\_treated\_group}
+\NormalTok{control\_group\_before\_after    }\OtherTok{\textless{}{-}}\NormalTok{post\_treatement\_control\_group}\SpecialCharTok{{-}}\NormalTok{ pre\_treatement\_control\_group}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Policy Effect(DiD
+Estimate:)}\label{policy-effectdid-estimate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{policy\_effect\_nive }\OtherTok{\textless{}{-}}\NormalTok{ treatement\_group\_before\_after }\SpecialCharTok{{-}}\NormalTok{ control\_group\_before\_after}
+\FunctionTok{print}\NormalTok{(policy\_effect\_nive)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.9512506
+\end{verbatim}
+
+\subsection{2. Calculating the policy effect on duration, without
+running any regression, here we see the mean log\_duration in weeks for
+both treated and control group before and after
+1980(treatemnt)}\label{calculating-the-policy-effect-on-duration-without-running-any-regression-here-we-see-the-mean-log_duration-in-weeks-for-both-treated-and-control-group-before-and-after-1980treatemnt}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{difr\_log }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{group\_by}\NormalTok{(after\_1980,highearn) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summarize}\NormalTok{(}\AttributeTok{mean.log\_duration =} \FunctionTok{mean}\NormalTok{(log\_duration))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` has grouped output by 'after_1980'. You can override using the
+## `.groups` argument.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(difr\_log)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 4 x 3
+## # Groups:   after_1980 [2]
+##   after_1980 highearn mean.log_duration
+##        <dbl>    <dbl>             <dbl>
+## 1          0        0              1.13
+## 2          0        1              1.38
+## 3          1        0              1.13
+## 4          1        1              1.58
+\end{verbatim}
+
+\subsubsection{{[}after\_1980(0);highearn(0){]}: pre-treatement control
+group mean\_log\_duration : 1.12
+weeks}\label{after_19800highearn0-pre-treatement-control-group-mean_log_duration-1.12-weeks}
+
+\subsubsection{{[}after\_1980(0);highearn(1){]}: pre-treatement treated
+group mean\_log\_duration : 1.38
+weeks}\label{after_19800highearn1-pre-treatement-treated-group-mean_log_duration-1.38-weeks}
+
+\subsubsection{{[}after\_1980(1);highearn(0){]}: post-treatement control
+group mean\_log\_duration : 1.13
+weeks}\label{after_19801highearn0-post-treatement-control-group-mean_log_duration-1.13-weeks}
+
+\subsubsection{{[}after\_1980(1);highearn(1){]}: post-treatement treated
+group mean\_log\_duration : 1.58
+weeks}\label{after_19801highearn1-post-treatement-treated-group-mean_log_duration-1.58-weeks}
+
+\subsubsection{policy\_effect ={[}(log\_avg\_duration(post-treatement
+treated group)-log\_avg\_duration(pre-treatement treated
+group){]}-{[}log\_avg\_duration(post-treatement control
+group)-log\_avg\_duration(pre-treatement control
+group){]}}\label{policy_effect-log_avg_durationpost-treatement-treated-group-log_avg_durationpre-treatement-treated-group-log_avg_durationpost-treatement-control-group-log_avg_durationpre-treatement-control-group}
+
+\subsubsection{policy\_effect = {[}log\_avg\_duration of treated group
+(POST-PRE){]}-{[}log\_avg\_duration of control
+group(POST-PRE){]}}\label{policy_effect-log_avg_duration-of-treated-group-post-pre-log_avg_duration-of-control-grouppost-pre}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pre\_treatement\_treated\_group\_log }\OtherTok{\textless{}{-}}\NormalTok{ difr\_log }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(after\_1980 }\SpecialCharTok{==} \DecValTok{0}\NormalTok{, highearn }\SpecialCharTok{==} \DecValTok{1}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{pull}\NormalTok{(mean.log\_duration)}
+
+\NormalTok{pre\_treatement\_control\_group\_log}\OtherTok{\textless{}{-}}\NormalTok{ difr\_log }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(after\_1980 }\SpecialCharTok{==} \DecValTok{0}\NormalTok{, highearn }\SpecialCharTok{==} \DecValTok{0}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{pull}\NormalTok{(mean.log\_duration)}
+
+\NormalTok{post\_treatement\_treated\_group\_log }\OtherTok{\textless{}{-}}\NormalTok{ difr\_log }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(after\_1980 }\SpecialCharTok{==} \DecValTok{1}\NormalTok{, highearn }\SpecialCharTok{==} \DecValTok{1}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{pull}\NormalTok{(mean.log\_duration)}
+
+\NormalTok{post\_treatement\_control\_group\_log }\OtherTok{\textless{}{-}}\NormalTok{ difr\_log }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(after\_1980 }\SpecialCharTok{==} \DecValTok{1}\NormalTok{, highearn }\SpecialCharTok{==} \DecValTok{0}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{pull}\NormalTok{(mean.log\_duration)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{log\_treatement\_group\_before\_after }\OtherTok{\textless{}{-}}\NormalTok{ post\_treatement\_treated\_group\_log }\SpecialCharTok{{-}} 
+\NormalTok{  pre\_treatement\_treated\_group\_log}
+\NormalTok{log\_control\_group\_before\_after    }\OtherTok{\textless{}{-}}\NormalTok{post\_treatement\_control\_group\_log}\SpecialCharTok{{-}} 
+\NormalTok{  pre\_treatement\_control\_group\_log}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Policy Effect log(DiD log
+Estimate:)}\label{policy-effect-logdid-log-estimate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{policy\_effect\_log }\OtherTok{\textless{}{-}}\NormalTok{ log\_treatement\_group\_before\_after }\SpecialCharTok{{-}}\NormalTok{ log\_control\_group\_before\_after}
+\FunctionTok{print}\NormalTok{(policy\_effect\_log)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.1906012
+\end{verbatim}
+
+\section{Plotting}\label{plotting}
+
+\subsubsection{Distribution of Duration by
+Category}\label{distribution-of-duration-by-category}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ duration)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{10}\NormalTok{, }\AttributeTok{color =} \StringTok{"white"}\NormalTok{, }\AttributeTok{boundary =} \DecValTok{0}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{ highearn)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Project_2_files/figure-latex/unnamed-chunk-15-1.pdf}
+
+\subsubsection{Ploting log duration based on
+category}\label{ploting-log-duration-based-on-category}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ df, }\AttributeTok{mapping =} \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ log\_duration)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{color =} \StringTok{"white"}\NormalTok{, }\AttributeTok{boundary =} \DecValTok{0}\NormalTok{) }\SpecialCharTok{+} 
+   \FunctionTok{scale\_x\_continuous}\NormalTok{(}\AttributeTok{labels =} \FunctionTok{trans\_format}\NormalTok{(}\StringTok{"exp"}\NormalTok{, }\AttributeTok{format =}\NormalTok{ round)) }\SpecialCharTok{+}
+  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{ highearn)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Project_2_files/figure-latex/unnamed-chunk-16-1.pdf}
+
+\subsubsection{Here we just calculate
+Mean}\label{here-we-just-calculate-mean}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{factor}\NormalTok{(highearn), }\AttributeTok{y =}\NormalTok{ log\_duration)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{size =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{alpha =} \FloatTok{0.2}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{stat\_summary}\NormalTok{(}\AttributeTok{geom =} \StringTok{"point"}\NormalTok{, }\AttributeTok{fun =} \StringTok{"mean"}\NormalTok{, }\AttributeTok{size =} \DecValTok{5}\NormalTok{, }\AttributeTok{color =} \StringTok{"blue"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{facet\_wrap}\NormalTok{(}\FunctionTok{vars}\NormalTok{(after\_1980))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Project_2_files/figure-latex/unnamed-chunk-17-1.pdf}
+
+\subsection{3.Basic Regression analysis to calculate the estimates
+without any
+control}\label{basic-regression-analysis-to-calculate-the-estimates-without-any-control}
+
+\subsubsection{Basic Regression model}\label{basic-regression-model}
+
+\[
+duration = \beta_0 + \beta_1 after1980 + \beta_2 highearn + \delta afterchange \cdot highearn + u
+\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{basic\_model\_1 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(duration }\SpecialCharTok{\textasciitilde{}}\NormalTok{ after\_1980 }\SpecialCharTok{+}\NormalTok{ highearn }\SpecialCharTok{+}\NormalTok{ after\_1980}\SpecialCharTok{*}\NormalTok{highearn, }\AttributeTok{data =}\NormalTok{ df)}
+\FunctionTok{tidy}\NormalTok{(basic\_model\_1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 4 x 5
+##   term                estimate std.error statistic  p.value
+##   <chr>                  <dbl>     <dbl>     <dbl>    <dbl>
+## 1 (Intercept)            6.27      0.523    12.0   9.51e-33
+## 2 after_1980             0.766     0.761     1.01  3.14e- 1
+## 3 highearn               4.91      0.807     6.08  1.30e- 9
+## 4 after_1980:highearn    0.951     1.17      0.816 4.14e- 1
+\end{verbatim}
+
+The notation \(\delta\)\(1\) = 0.9513, indicates that the policy change
+might have increased the duration of benefits for high-income workers by
+about 0.9513 weeks more than for low-income workers. However, this
+effect is not statistically significant (p=0.414). The coefficient on
+after\_1980 is small 0.7658 and statistically insignificant which means
+the increase in the earnings cap has no effect on duration for
+low-income workers.
+
+\[
+\log(duration) = \beta_0 + \beta_1 after1980 + \beta_2 highearn + \delta_1 afterchange \cdot highearn + u
+\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{basic\_model\_2 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(}\FunctionTok{log}\NormalTok{(duration) }\SpecialCharTok{\textasciitilde{}}\NormalTok{ after\_1980 }\SpecialCharTok{+}\NormalTok{ highearn }\SpecialCharTok{+}\NormalTok{ after\_1980}\SpecialCharTok{*}\NormalTok{highearn, }\AttributeTok{data =}\NormalTok{ df)}
+\FunctionTok{tidy}\NormalTok{(basic\_model\_2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 4 x 5
+##   term                estimate std.error statistic   p.value
+##   <chr>                  <dbl>     <dbl>     <dbl>     <dbl>
+## 1 (Intercept)          1.13       0.0307    36.6   1.62e-263
+## 2 after_1980           0.00766    0.0447     0.171 8.64e-  1
+## 3 highearn             0.256      0.0474     5.41  6.72e-  8
+## 4 after_1980:highearn  0.191      0.0685     2.78  5.42e-  3
+\end{verbatim}
+
+The notation \(\delta\) signifies that the average duration of workers'
+compensation among high earners rose approximately by 19.06\% due to the
+increased earnings cap. The coefficient on after\_1980 is small 0.007
+and statistically insignificant which means the increase in the earnings
+cap has no effect on duration for low-income workers.
+
+\subsection{4.regression adujstment procedure to evaluate the impact of
+policy change on the duration, and
+log\_duration.}\label{regression-adujstment-procedure-to-evaluate-the-impact-of-policy-change-on-the-duration-and-log_duration.}
+
+\subsubsection{Regression Adjustment Model
+1}\label{regression-adjustment-model-1}
+
+\[
+\text{duration} = \beta_0 + \beta_1 \text{after1980} + \beta_2 \text{highearn} + \delta_1 \text{afterchange} \cdot \text{highearn} \\\]
+\[+ \gamma_1\text{male} + \gamma_2\text{married} + \gamma_3\text{age}^2 + \gamma_4\text{hosp} + \gamma_5\text{indust} \\\]
+\[+ \gamma_6\text{injtype} + \gamma_7\text{lprewage}+ u\] \#\#\#
+Creating a new column age squared
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{age\_squared =}\NormalTok{ age}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{adv\_model\_1 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(duration }\SpecialCharTok{\textasciitilde{}}\NormalTok{ after\_1980 }\SpecialCharTok{+}\NormalTok{ highearn }\SpecialCharTok{+} 
+\NormalTok{after\_1980}\SpecialCharTok{*}\NormalTok{highearn }\SpecialCharTok{+}\NormalTok{ male }\SpecialCharTok{+}\NormalTok{ married }\SpecialCharTok{+}\NormalTok{ age\_squared }\SpecialCharTok{+} 
+\NormalTok{hosp }\SpecialCharTok{+}\NormalTok{ indust }\SpecialCharTok{+}\NormalTok{ injtype }\SpecialCharTok{+}\NormalTok{ lprewage, }\AttributeTok{data =}\NormalTok{df)}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{summary}\NormalTok{(adv\_model\_1))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = duration ~ after_1980 + highearn + after_1980 * 
+##     highearn + male + married + age_squared + hosp + indust + 
+##     injtype + lprewage, data = df)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -27.603  -6.471  -2.251   1.503 181.142 
+## 
+## Coefficients:
+##                       Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)         -1.863e+01  7.171e+00  -2.598 0.009390 ** 
+## after_1980           1.101e+00  7.031e-01   1.566 0.117441    
+## highearn            -1.100e+00  1.517e+00  -0.726 0.468082    
+## male                -9.995e-01  7.165e-01  -1.395 0.163113    
+## married              1.581e+00  6.286e-01   2.515 0.011938 *  
+## age_squared          3.412e-04  2.820e-04   1.210 0.226412    
+## hosp                 1.346e+01  6.296e-01  21.379  < 2e-16 ***
+## indust2              7.637e-01  9.210e-01   0.829 0.407036    
+## indust3              2.781e+00  6.440e-01   4.318  1.6e-05 ***
+## injtype2             5.904e+00  2.446e+00   2.414 0.015813 *  
+## injtype3             1.104e+00  1.454e+00   0.760 0.447436    
+## injtype4            -5.895e-01  1.580e+00  -0.373 0.709034    
+## injtype5             3.461e+00  1.454e+00   2.381 0.017308 *  
+## injtype6             3.725e-01  1.469e+00   0.254 0.799757    
+## injtype7             1.071e+01  3.241e+00   3.303 0.000962 ***
+## injtype8            -1.464e-02  2.023e+00  -0.007 0.994227    
+## lprewage             3.454e+00  1.362e+00   2.536 0.011226 *  
+## after_1980:highearn  1.790e+00  1.088e+00   1.644 0.100192    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 19.56 on 5329 degrees of freedom
+##   (279 observations deleted due to missingness)
+## Multiple R-squared:  0.1102, Adjusted R-squared:  0.1074 
+## F-statistic: 38.83 on 17 and 5329 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+After controlling for all the X's (male ,married , age\_squared
+,hosp,indust,injtype,lprewage), the coeffcicent of interation term comes
+out to be 1.79 whic is insignificant.
+
+\subsubsection{Regression Adjustment Model
+2}\label{regression-adjustment-model-2}
+
+\[
+\log(\text{duration}) = \beta_0 + \beta_1 \text{after1980} + \beta_2 \text{highearn} + \delta_1 \text{afterchange} \cdot \text{highearn} \\\]
+\[
++ \gamma_1\text{male} + \gamma_2\text{married} + \gamma_3\text{age}^2 + \gamma_4\text{hosp} + \gamma_5\text{indust} \\\]
+\[+ \gamma_6\text{injtype} + \gamma_7\text{lprewage}+ u\]
+
+After controlling for all the X's (male ,married , age\_squared
+,hosp,indust, injtype,lprewage), the coeffcicent of interation term
+comes out to be 1.69 whic is significant , which means that the he
+average duration of workers' compensation among high earners rose
+approximately by 16.07\% due to the increased earnings cap.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{adv\_model\_2 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(log\_duration }\SpecialCharTok{\textasciitilde{}}\NormalTok{ after\_1980 }\SpecialCharTok{+}\NormalTok{ highearn }\SpecialCharTok{+} 
+\NormalTok{after\_1980}\SpecialCharTok{*}\NormalTok{highearn }\SpecialCharTok{+}\NormalTok{ male }\SpecialCharTok{+}\NormalTok{ married }\SpecialCharTok{+}\NormalTok{ age\_squared }\SpecialCharTok{+}\NormalTok{ hosp }
+\SpecialCharTok{+}\NormalTok{ indust }\SpecialCharTok{+}\NormalTok{ injtype }\SpecialCharTok{+}\NormalTok{ lprewage, }\AttributeTok{data =}\NormalTok{df)}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{summary}\NormalTok{(adv\_model\_2))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = log_duration ~ after_1980 + highearn + after_1980 * 
+##     highearn + male + married + age_squared + hosp + indust + 
+##     injtype + lprewage, data = df)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -4.0550 -0.7754  0.0930  0.7318  4.3620 
+## 
+## Coefficients:
+##                       Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)         -1.460e+00  4.216e-01  -3.463 0.000538 ***
+## after_1980           4.937e-02  4.134e-02   1.194 0.232437    
+## highearn            -1.532e-01  8.916e-02  -1.718 0.085832 .  
+## male                -9.264e-02  4.213e-02  -2.199 0.027931 *  
+## married              6.771e-02  3.696e-02   1.832 0.067005 .  
+## age_squared          7.357e-05  1.658e-05   4.437 9.32e-06 ***
+## hosp                 1.131e+00  3.702e-02  30.546  < 2e-16 ***
+## indust2              1.831e-01  5.415e-02   3.380 0.000729 ***
+## indust3              1.629e-01  3.787e-02   4.301 1.73e-05 ***
+## injtype2             9.364e-01  1.438e-01   6.512 8.09e-11 ***
+## injtype3             6.362e-01  8.547e-02   7.443 1.14e-13 ***
+## injtype4             5.571e-01  9.288e-02   5.998 2.13e-09 ***
+## injtype5             6.446e-01  8.547e-02   7.542 5.42e-14 ***
+## injtype6             6.163e-01  8.634e-02   7.137 1.08e-12 ***
+## injtype7             9.966e-01  1.906e-01   5.229 1.77e-07 ***
+## injtype8             4.361e-01  1.190e-01   3.666 0.000248 ***
+## lprewage             2.943e-01  8.005e-02   3.676 0.000239 ***
+## after_1980:highearn  1.697e-01  6.400e-02   2.651 0.008043 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 1.15 on 5329 degrees of freedom
+##   (279 observations deleted due to missingness)
+## Multiple R-squared:  0.1893, Adjusted R-squared:  0.1867 
+## F-statistic: 73.17 on 17 and 5329 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+Combining the data set to contain (ky==0) We here combine the data set
+including the state of michigan state sample .
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dataset\_combined }\OtherTok{\textless{}{-}}\NormalTok{ dataset }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{rename}\NormalTok{(}\AttributeTok{duration =}\NormalTok{ durat, }
+\AttributeTok{log\_duration =}\NormalTok{ ldurat,}\AttributeTok{after\_1980 =}\NormalTok{ afchnge)}\SpecialCharTok{\%\textgreater{}\%} 
+\FunctionTok{mutate}\NormalTok{(}\AttributeTok{indust =} \FunctionTok{as.factor}\NormalTok{(indust),}\AttributeTok{injtype =} \FunctionTok{as.factor}\NormalTok{(injtype))}\SpecialCharTok{\%\textgreater{}\%} 
+\FunctionTok{mutate}\NormalTok{(}\AttributeTok{age\_squared =}\NormalTok{ age}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{5. Robustness check}\label{robustness-check}
+
+\[\log(\text{duration}) = \beta_0 + \beta_1 \text{after1980} + \beta_2 \text{highearn}
++ \delta_1 \text{afterchange} \cdot \text{highearn} \\\]
+\[+ \gamma_1\text{male} + \gamma_2\text{married} + \gamma_3\text{age}^2 \\
++ \gamma_4\text{hosp} + \gamma_5\text{indust} \\\]
+\[+ \gamma_6\text{injtype} + \gamma_7\text{lprewage} \\
++ \delta_2 \text{after1980} \cdot \text{ky} + \delta_3 \text{ky} + u
+\]
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{robust\_model1 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(log\_duration }\SpecialCharTok{\textasciitilde{}}\NormalTok{ after\_1980 }\SpecialCharTok{+}\NormalTok{ highearn }\SpecialCharTok{+}
+\NormalTok{after\_1980}\SpecialCharTok{*}\NormalTok{highearn }\SpecialCharTok{+}\NormalTok{ male }\SpecialCharTok{+}\NormalTok{ married }\SpecialCharTok{+}\NormalTok{ age\_squared }\SpecialCharTok{+}\NormalTok{ hosp }
+\SpecialCharTok{+}\NormalTok{ indust }\SpecialCharTok{+}\NormalTok{ injtype }\SpecialCharTok{+}\NormalTok{ lprewage }\SpecialCharTok{+}\NormalTok{ ky }\SpecialCharTok{+}\NormalTok{ky}\SpecialCharTok{:}\NormalTok{after\_1980, }\AttributeTok{data =}\NormalTok{dataset\_combined)}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{summary}\NormalTok{(robust\_model1))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = log_duration ~ after_1980 + highearn + after_1980 * 
+##     highearn + male + married + age_squared + hosp + indust + 
+##     injtype + lprewage + ky + ky:after_1980, data = dataset_combined)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -4.7673 -0.7489  0.0699  0.7357  4.2709 
+## 
+## Coefficients:
+##                       Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)         -1.175e+00  4.514e-01  -2.603 0.009270 ** 
+## after_1980           8.059e-02  6.422e-02   1.255 0.209597    
+## highearn            -1.326e-01  8.690e-02  -1.526 0.126941    
+## male                -1.438e-01  3.852e-02  -3.732 0.000192 ***
+## married              4.594e-02  3.324e-02   1.382 0.167018    
+## age_squared          8.785e-05  1.501e-05   5.853 5.04e-09 ***
+## hosp                 1.101e+00  3.346e-02  32.910  < 2e-16 ***
+## indust2              2.640e-01  4.724e-02   5.588 2.38e-08 ***
+## indust3              1.551e-01  3.370e-02   4.603 4.24e-06 ***
+## injtype2             8.898e-01  1.333e-01   6.674 2.68e-11 ***
+## injtype3             6.550e-01  7.936e-02   8.254  < 2e-16 ***
+## injtype4             5.969e-01  8.558e-02   6.975 3.35e-12 ***
+## injtype5             6.315e-01  7.956e-02   7.938 2.39e-15 ***
+## injtype6             6.068e-01  8.025e-02   7.562 4.49e-14 ***
+## injtype7             1.115e+00  1.612e-01   6.918 5.00e-12 ***
+## injtype8             5.605e-01  1.080e-01   5.190 2.16e-07 ***
+## lprewage             2.758e-01  7.919e-02   3.483 0.000499 ***
+## ky                  -1.628e-01  5.932e-02  -2.745 0.006064 ** 
+## after_1980:highearn  1.674e-01  5.887e-02   2.843 0.004476 ** 
+## after_1980:ky       -2.950e-02  6.997e-02  -0.422 0.673382    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 1.179 on 6802 degrees of freedom
+##   (328 observations deleted due to missingness)
+## Multiple R-squared:  0.1832, Adjusted R-squared:  0.1809 
+## F-statistic: 80.27 on 19 and 6802 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\subsection{DDD}\label{ddd}
+
+\[
+\text{log(duration)}= \beta_0+ \beta_1*ky+ \beta_2*after1980_t+ \beta_3*highEarn_i+\\
+\]
+\[\gamma_1(ky_s*after1980_t)+\gamma_2(ky*highearn)+ \gamma_2(after1980*highearn)+\\
+\delta_1(ky*after1980*highearn)+ \psi*{X}+ u\]
+
+Considering the entire dataset including Michigan, we need to account
+for state-specific and income-specific time trends that might influence
+compensation benefits. To do this, we use Triple Differences, which
+involves comparing the differences between Kentucky and Michigan data to
+eliminate these confounding factors.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{DDD}\OtherTok{=} \FunctionTok{lm}\NormalTok{( duration }\SpecialCharTok{\textasciitilde{}}\NormalTok{ ky }\SpecialCharTok{+}\NormalTok{ after\_1980 }\SpecialCharTok{+}\NormalTok{ highearn }\SpecialCharTok{+}\NormalTok{ ky}\SpecialCharTok{*}\NormalTok{after\_1980 }\SpecialCharTok{+}\NormalTok{ ky}\SpecialCharTok{*}\NormalTok{highearn }
+         \SpecialCharTok{+}\NormalTok{ after\_1980}\SpecialCharTok{*}\NormalTok{highearn }\SpecialCharTok{+}\NormalTok{ ky}\SpecialCharTok{*}\NormalTok{after\_1980}\SpecialCharTok{*}\NormalTok{highearn }\SpecialCharTok{+}\NormalTok{ male }\SpecialCharTok{+}\NormalTok{ married }
+         \SpecialCharTok{+}\NormalTok{ age\_squared }\SpecialCharTok{+}\NormalTok{ hosp }
+\SpecialCharTok{+}\NormalTok{ indust }\SpecialCharTok{+}\NormalTok{ injtype }\SpecialCharTok{+}\NormalTok{ lprewage, }\AttributeTok{data=}\NormalTok{dataset\_combined)}
+\FunctionTok{summary}\NormalTok{(DDD)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = duration ~ ky + after_1980 + highearn + ky * after_1980 + 
+##     ky * highearn + after_1980 * highearn + ky * after_1980 * 
+##     highearn + male + married + age_squared + hosp + indust + 
+##     injtype + lprewage, data = dataset_combined)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -41.970  -7.650  -2.916   1.287 179.648 
+## 
+## Coefficients:
+##                          Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)            -1.483e+01  8.685e+00  -1.708 0.087693 .  
+## ky                     -3.296e+00  1.295e+00  -2.545 0.010941 *  
+## after_1980              2.708e+00  1.421e+00   1.906 0.056712 .  
+## highearn                5.330e-01  2.303e+00   0.231 0.816988    
+## male                   -1.865e+00  7.407e-01  -2.518 0.011813 *  
+## married                 8.539e-01  6.387e-01   1.337 0.181296    
+## age_squared             8.690e-04  2.888e-04   3.009 0.002634 ** 
+## hosp                    1.380e+01  6.430e-01  21.468  < 2e-16 ***
+## indust2                 2.311e+00  9.102e-01   2.539 0.011141 *  
+## indust3                 2.485e+00  6.476e-01   3.838 0.000125 ***
+## injtype2                6.412e+00  2.562e+00   2.503 0.012331 *  
+## injtype3                1.889e+00  1.525e+00   1.239 0.215275    
+## injtype4                5.805e-01  1.644e+00   0.353 0.723992    
+## injtype5                4.376e+00  1.528e+00   2.863 0.004204 ** 
+## injtype6                8.398e-01  1.542e+00   0.545 0.585941    
+## injtype7                1.297e+01  3.101e+00   4.181 2.94e-05 ***
+## injtype8                2.665e+00  2.075e+00   1.284 0.199142    
+## lprewage                3.250e+00  1.522e+00   2.136 0.032710 *  
+## ky:after_1980          -1.636e+00  1.638e+00  -0.999 0.317866    
+## ky:highearn            -1.269e+00  1.975e+00  -0.643 0.520521    
+## after_1980:highearn     5.057e-01  2.576e+00   0.196 0.844378    
+## ky:after_1980:highearn  1.361e+00  2.868e+00   0.474 0.635199    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 22.64 on 6800 degrees of freedom
+##   (328 observations deleted due to missingness)
+## Multiple R-squared:  0.09577,    Adjusted R-squared:  0.09298 
+## F-statistic:  34.3 on 21 and 6800 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+here we see that the triple interaction term comes out to be 1.36
+positive but insignificant, when controlling for all the other possible
+X's.
+
+\section{6. Generating Graph}\label{generating-graph}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{graph\_data }\OtherTok{\textless{}{-}}\NormalTok{ dataset\_combined }\SpecialCharTok{\%\textgreater{}\%} 
+   \FunctionTok{mutate}\NormalTok{(}\AttributeTok{highearn =} \FunctionTok{factor}\NormalTok{(highearn, }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Low earner"}\NormalTok{, }\StringTok{"High earner"}\NormalTok{)),}
+         \AttributeTok{after\_1980 =} \FunctionTok{factor}\NormalTok{(after\_1980, }\AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Before 1980"}\NormalTok{, }\StringTok{"After 1980"}\NormalTok{))) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(highearn, after\_1980) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{mean\_duration =} \FunctionTok{mean}\NormalTok{(log\_duration),}
+            \AttributeTok{se\_duration =} \FunctionTok{sd}\NormalTok{(log\_duration) }\SpecialCharTok{/} \FunctionTok{sqrt}\NormalTok{(}\FunctionTok{n}\NormalTok{()),}
+            \AttributeTok{upper =}\NormalTok{ mean\_duration }\SpecialCharTok{+}\NormalTok{ (}\FloatTok{1.96} \SpecialCharTok{*}\NormalTok{ se\_duration),}
+            \AttributeTok{lower =}\NormalTok{ mean\_duration }\SpecialCharTok{+}\NormalTok{ (}\SpecialCharTok{{-}}\FloatTok{1.96} \SpecialCharTok{*}\NormalTok{ se\_duration)) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` has grouped output by 'highearn'. You can override using the
+## `.groups` argument.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(graph\_data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ highearn, }\AttributeTok{y =}\NormalTok{ mean\_duration)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_pointrange}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{ymin =}\NormalTok{ lower, }\AttributeTok{ymax =}\NormalTok{ upper), }
+                  \AttributeTok{color =} \StringTok{"darkorange"}\NormalTok{, }\AttributeTok{size =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{facet\_wrap}\NormalTok{(}\FunctionTok{vars}\NormalTok{(after\_1980))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Project_2_files/figure-latex/unnamed-chunk-27-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(graph\_data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ after\_1980, }\AttributeTok{y =}\NormalTok{ mean\_duration, }\AttributeTok{color =}\NormalTok{ highearn)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_pointrange}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{ymin =}\NormalTok{ lower, }\AttributeTok{ymax =}\NormalTok{ upper), }\AttributeTok{size =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+} 
+  \CommentTok{\# The group = highearn here makes it so the lines go across categories}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{group =}\NormalTok{ highearn))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Project_2_files/figure-latex/unnamed-chunk-28-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(difr\_log, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{as.factor}\NormalTok{(after\_1980), }
+                  \AttributeTok{y =}\NormalTok{ mean.log\_duration, }
+                  \AttributeTok{color =} \FunctionTok{as.factor}\NormalTok{(highearn)))}\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{group =} \FunctionTok{as.factor}\NormalTok{(highearn))) }\SpecialCharTok{+}
+  \FunctionTok{annotate}\NormalTok{(}\AttributeTok{geom =} \StringTok{"segment"}\NormalTok{, }\AttributeTok{x =} \StringTok{"0"}\NormalTok{, }\AttributeTok{xend =} \StringTok{"1"}\NormalTok{,}
+           \AttributeTok{y =}\NormalTok{ pre\_treatement\_treated\_group\_log, }\AttributeTok{yend =} 
+\NormalTok{             post\_treatement\_treated\_group\_log }\SpecialCharTok{{-}}\NormalTok{ policy\_effect\_log,}
+           \AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{annotate}\NormalTok{(}\AttributeTok{geom =} \StringTok{"segment"}\NormalTok{, }\AttributeTok{x =} \StringTok{"1"}\NormalTok{, }\AttributeTok{xend =} \StringTok{"1"}\NormalTok{,}
+           \AttributeTok{y =}\NormalTok{ post\_treatement\_treated\_group\_log, }\AttributeTok{yend =}
+\NormalTok{             post\_treatement\_treated\_group\_log }\SpecialCharTok{{-}}\NormalTok{ policy\_effect\_log,}
+           \AttributeTok{linetype =} \StringTok{"dotted"}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{annotate}\NormalTok{(}\AttributeTok{geom =} \StringTok{"label"}\NormalTok{, }\AttributeTok{x =} \StringTok{"1"}\NormalTok{, }\AttributeTok{y =}\NormalTok{ post\_treatement\_treated\_group\_log}
+           \SpecialCharTok{{-}}\NormalTok{ (policy\_effect\_log }\SpecialCharTok{/} \DecValTok{2}\NormalTok{), }
+           \AttributeTok{label =} \StringTok{"Program effect"}\NormalTok{, }\AttributeTok{size =} \DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Project_2_files/figure-latex/unnamed-chunk-29-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{modelsummary}\NormalTok{(}\FunctionTok{list}\NormalTok{(basic\_model\_2,adv\_model\_2,DDD,robust\_model1),}\AttributeTok{output=}\StringTok{\textquotesingle{}latex\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+\centering
+\begin{tblr}[         %% tabularray outer open
+]                     %% tabularray outer close
+{                     %% tabularray inner open
+colspec={Q[]Q[]Q[]Q[]Q[]},
+column{1}={halign=l,},
+column{2}={halign=c,},
+column{3}={halign=c,},
+column{4}={halign=c,},
+column{5}={halign=c,},
+hline{48}={1,2,3,4,5}{solid, 0.05em, black},
+}                     %% tabularray inner close
+\toprule
+& (1) & (2) & (3) & (4) \\ \midrule %% TinyTableHeader
+(Intercept)                  & \num{1.126}     & \num{-1.460}    & \num{-14.834}    & \num{-1.175}     \\
+& (\num{0.031})   & (\num{0.422})   & (\num{8.685})    & (\num{0.451})    \\
+after\_1980                 & \num{0.008}     & \num{0.049}     & \num{2.708}      & \num{0.081}      \\
+& (\num{0.045})   & (\num{0.041})   & (\num{1.421})    & (\num{0.064})    \\
+highearn                     & \num{0.256}     & \num{-0.153}    & \num{0.533}      & \num{-0.133}     \\
+& (\num{0.047})   & (\num{0.089})   & (\num{2.303})    & (\num{0.087})    \\
+after\_1980 × highearn      & \num{0.191}     & \num{0.170}     & \num{0.506}      & \num{0.167}      \\
+& (\num{0.069})   & (\num{0.064})   & (\num{2.576})    & (\num{0.059})    \\
+male                         &                  & \num{-0.093}    & \num{-1.865}     & \num{-0.144}     \\
+&                  & (\num{0.042})   & (\num{0.741})    & (\num{0.039})    \\
+married                      &                  & \num{0.068}     & \num{0.854}      & \num{0.046}      \\
+&                  & (\num{0.037})   & (\num{0.639})    & (\num{0.033})    \\
+age\_squared                &                  & \num{0.000}     & \num{0.001}      & \num{0.000}      \\
+&                  & (\num{0.000})   & (\num{0.000})    & (\num{0.000})    \\
+hosp                         &                  & \num{1.131}     & \num{13.804}     & \num{1.101}      \\
+&                  & (\num{0.037})   & (\num{0.643})    & (\num{0.033})    \\
+indust2                      &                  & \num{0.183}     & \num{2.311}      & \num{0.264}      \\
+&                  & (\num{0.054})   & (\num{0.910})    & (\num{0.047})    \\
+indust3                      &                  & \num{0.163}     & \num{2.485}      & \num{0.155}      \\
+&                  & (\num{0.038})   & (\num{0.648})    & (\num{0.034})    \\
+injtype2                     &                  & \num{0.936}     & \num{6.412}      & \num{0.890}      \\
+&                  & (\num{0.144})   & (\num{2.562})    & (\num{0.133})    \\
+injtype3                     &                  & \num{0.636}     & \num{1.889}      & \num{0.655}      \\
+&                  & (\num{0.085})   & (\num{1.525})    & (\num{0.079})    \\
+injtype4                     &                  & \num{0.557}     & \num{0.581}      & \num{0.597}      \\
+&                  & (\num{0.093})   & (\num{1.644})    & (\num{0.086})    \\
+injtype5                     &                  & \num{0.645}     & \num{4.376}      & \num{0.631}      \\
+&                  & (\num{0.085})   & (\num{1.528})    & (\num{0.080})    \\
+injtype6                     &                  & \num{0.616}     & \num{0.840}      & \num{0.607}      \\
+&                  & (\num{0.086})   & (\num{1.542})    & (\num{0.080})    \\
+injtype7                     &                  & \num{0.997}     & \num{12.966}     & \num{1.115}      \\
+&                  & (\num{0.191})   & (\num{3.101})    & (\num{0.161})    \\
+injtype8                     &                  & \num{0.436}     & \num{2.665}      & \num{0.561}      \\
+&                  & (\num{0.119})   & (\num{2.075})    & (\num{0.108})    \\
+lprewage                     &                  & \num{0.294}     & \num{3.250}      & \num{0.276}      \\
+&                  & (\num{0.080})   & (\num{1.522})    & (\num{0.079})    \\
+ky                           &                  &                  & \num{-3.296}     & \num{-0.163}     \\
+&                  &                  & (\num{1.295})    & (\num{0.059})    \\
+ky × after\_1980            &                  &                  & \num{-1.636}     &                   \\
+&                  &                  & (\num{1.638})    &                   \\
+ky × highearn                &                  &                  & \num{-1.269}     &                   \\
+&                  &                  & (\num{1.975})    &                   \\
+ky × after\_1980 × highearn &                  &                  & \num{1.361}      &                   \\
+&                  &                  & (\num{2.868})    &                   \\
+after\_1980 × ky            &                  &                  &                   & \num{-0.029}     \\
+&                  &                  &                   & (\num{0.070})    \\
+Num.Obs.                     & \num{5626}      & \num{5347}      & \num{6822}       & \num{6822}       \\
+R2                           & \num{0.021}     & \num{0.189}     & \num{0.096}      & \num{0.183}      \\
+R2 Adj.                      & \num{0.020}     & \num{0.187}     & \num{0.093}      & \num{0.181}      \\
+AIC                          & \num{18654.0}   & \num{16688.7}   & \num{61949.1}    & \num{21623.7}    \\
+BIC                          & \num{18687.2}   & \num{16813.8}   & \num{62106.1}    & \num{21767.0}    \\
+Log.Lik.                     & \num{-9321.997} & \num{-8325.371} & \num{-30951.538} & \num{-10790.826} \\
+RMSE                         & \num{1.27}      & \num{1.15}      & \num{22.60}      & \num{1.18}       \\
+\bottomrule
+\end{tblr}
+\end{table}
+
+\end{document}
