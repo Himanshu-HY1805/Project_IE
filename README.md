@@ -11,7 +11,7 @@ All projects are implemented in **R** and **Python**.
 ---
 
 **Author:**  
-> ### Utkarsh
+> ### Himanshu Yadav
 
 **School:**  
 > ### 🏫 Delhi School of Economics
